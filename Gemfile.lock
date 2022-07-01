@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    resources_nav (0.1.0)
+    resources_nav (1.0.2)
       rails (>= 7.0.3)
 
 GEM

@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [1.0.2] - 2022-07-01
+### Added
+- Make sure each resource is added only once
+- Supports adding multiple resources
+- New tests covering more cases
+
 ## [1.0.0] - 2022-07-01
 ### Added
 - First release

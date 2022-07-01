@@ -8,7 +8,9 @@ module ResourcesNav
         options = resources.extract_options!.dup
         if options[:nav]
           @set.resources_nav ||= []
-          @set.resources_nav << resources.first
+          resources.each do |resource|
+            @set.resources_nav << resource unless @set.resources_nav.include?(resource)
+          end
         end
         resources_orig(*resources, &block)
       end
