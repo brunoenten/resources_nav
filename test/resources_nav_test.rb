@@ -40,4 +40,18 @@ class ResourcesNavTest < ActiveSupport::TestCase
     end
     assert !Rails.application.routes.resources_nav.include?(:watermelons)
   end
+
+  test "it accepts an option hash" do
+    Rails.application.routes.draw do
+      resources :cherries, nav: { foo: :bar }
+    end
+    assert Rails.application.routes.resources_nav.include?(:cherries)
+  end
+
+  test "it stores an optional icon name" do
+    Rails.application.routes.draw do
+      resources :cherries, nav: { icon: 'cherry' }
+    end
+    assert_equal 'cherry', Rails.application.routes.resources_nav.detect {|r| r == :cherries}.icon
+  end
 end

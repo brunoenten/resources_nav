@@ -3,20 +3,30 @@ Add a :nav option to Rails routes mapper 'resources' method, that adds the resou
 It's convenient to populate a navigation menu.
 
 ## Usage
-Just add a nav option to your resources route in config/routes.rb, like so:
+Just add a nav option to your resources route in config/routes.rb. The nav option can take a hash,
+containing an icon name.
+
 ```ruby
 Rails.application.routes.draw do
   resources :apples, nav: true
   resources :oranges, nav: true
+  resources :apricots, nav: { icon: 'fruit' }
 end
 ```
 
 The resources array will then be accessible from Rails.application.routes.resources_nav:
 ```ruby
-irb(main):001:0> Rails.application.routes.resources_nav
-=> [:purchase_invoice_lines, :purchase_invoices, :journal_entries, :accounts, :companies]
-```
+Rails.application.routes.resources_nav.map(&:name)
+=> [:apples, :oranges, :apricots]
 
+resource = Rails.application.routes.resources_nav.detect { |r| r == :apricots }
+
+resource.name
+=> :apricots
+
+resource.icon
+=> 'fruit'
+```
 
 ## Installation
 Add this line to your application's Gemfile:
